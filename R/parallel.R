@@ -1,3 +1,4 @@
+#' @export
 parMontecarlo <- function( mcRun, rep_index, paramList, sourceFile = NULL, packages = NULL, ncpus = 10 ){
   # set ckzster:
   cl <- makeCluster(ncpus)
@@ -22,6 +23,7 @@ parMontecarlo <- function( mcRun, rep_index, paramList, sourceFile = NULL, packa
   return( list( rawResults = rawResults, wholeParamList = wholeParamList) )
 }
 
+#' @export
 getMontecarloTable <- function( mc, groupBy ){
   mcSize <- max( mc %>% select(rep) )
   mc %>% mutate_if( is.double, funs(round(., 3) ) ) %>%
